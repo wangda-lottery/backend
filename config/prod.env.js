@@ -4,5 +4,5 @@
 module.exports = {
   NODE_ENV: '"production"',
   ENV_CONFIG: '"prod"',
-  BASE_API: '"https://40997hb1.com/"',
+  BASE_API: '"/"',
 };

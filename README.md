@@ -3,8 +3,6 @@
 ## 开发
 
 ```bash
-# 克隆项目
-git clone https://gitee.com/payment-4th-platform/fe-console.git
 
 # 安装依赖
 npm install
