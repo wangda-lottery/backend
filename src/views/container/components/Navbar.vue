@@ -15,9 +15,9 @@
         <notification-list class="right-menu-item hover-effect international"/>
       </el-tooltip>
 
-      <el-tooltip content="后台链接" effect="dark" placement="bottom">
+      <!--el-tooltip content="后台链接" effect="dark" placement="bottom">
         <end-point-list class="right-menu-item hover-effect international"/>
-      </el-tooltip>
+      </el-tooltip-->
 
       <el-tooltip content="锁屏" effect="dark" placement="bottom">
         <lock-screen class="right-menu-item hover-effect international"/>
@@ -36,27 +36,6 @@
           <el-dropdown-item>
             <svg-icon class="link-type" icon-class="key"/>
             <span @click="onShowUpdatePwdForm"> 修改密码</span>
-          </el-dropdown-item>
-          <el-dropdown-item v-if="isRechargeMode" divided>
-            <span>
-              <svg-icon class="link-type" icon-class="cloud-server"/>
-              <span> 平台类型：{{userInfo.platform.type === 1 ? '预充值' : '官宣'}}</span>
-            </span>
-          </el-dropdown-item>
-          <el-dropdown-item v-if="isRechargeMode">
-            <span>
-              <span :style="'color: ' + (userInfo.platform.balance < 0 ? 'red' : '#606266')">
-              <svg-icon class="link-type" icon-class="money collect"/> 账户余额：{{((userInfo.platform.balance || 0) / 100).toFixed(2)}}
-              </span>
-            </span>
-          </el-dropdown-item>
-          <el-dropdown-item v-if="isRechargeMode">
-            <span @click="onShowBalanceLogs">
-              <span>
-                <svg-icon class="link-type" icon-class="e-order"/>
-                <span> 查看明细</span>
-              </span>
-            </span>
           </el-dropdown-item>
           <el-dropdown-item divided>
             <span @click="onSettings">
