@@ -183,11 +183,11 @@
       // 上传抽奖记录
       async onUploadData() {
         try {
-          await this.$confirm('确定派送抽奖结果至会员账户？已派送抽奖结果的不会重复派送', '抽奖结果派送');
+          await this.$confirm('确定批量派送抽奖结果至会员账户？已派送抽奖结果的不会重复派送', '抽奖结果派送');
 
           await this.$store.dispatch(DrawActions.Dispatch, {});
 
-          this.$message.success('抽奖结果派送成功');
+          this.$message.success('抽奖结果批量派送成功');
         } catch(e) {
           if (e.message) this.$message.error(e.message);
         }
@@ -200,7 +200,7 @@
 
           await this.$store.dispatch(DrawActions.ManualDispatch, {id: row.id});
 
-          this.$message.success('手动派送');
+          this.$message.success('手动派送成功');
         } catch(e) {
           if (e.message) this.$message.error(e.message);
         }
