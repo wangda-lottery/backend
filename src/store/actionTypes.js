@@ -70,6 +70,7 @@ export const MemTopUpActions = {
 export const DrawActions = {
   GetDrawList: 'GetDrawList',
   DeleteItem: 'DeleteItem',
+  ManualDispatch: 'ManualDispatch',
   Dispatch: 'Dispatch',
 };
 

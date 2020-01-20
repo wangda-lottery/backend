@@ -48,7 +48,13 @@ const draws = {
      await request({url: `draws/${payload.id}`, method: 'delete'});
     },
 
-    // 派头
+    // 手动派送
+    async [DrawActions.ManualDispatch]({commit, getters}, payload) {
+      console.log(payload)
+     await request({url: `draws/${payload.id}`, method: 'put'});
+    },
+
+    // 自动派送
     async [DrawActions.Dispatch]({commit, getters}, payload) {
      await request({url: `draws/export`, method: 'post'});
     },

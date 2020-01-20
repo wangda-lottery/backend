@@ -72,10 +72,11 @@
             </span>
           </template>
         </el-table-column>
-        <el-table-column label="操作" align="center" width="120">
+        <el-table-column label="操作" align="center" width="200">
           <template slot-scope="scope">
             <el-button-group>
-              <el-button type="danger" size="small" @click="onDelete(scope.row)">删除</el-button>
+              <el-button type="success" size="small" @click="onDispatched(scope.row)" :disabled="scope.row.exported === 1">手动派送</el-button>
+              <el-button type="danger" size="small" @click="onDelete(scope.row)" :disabled="scope.row.exported === 0">删除</el-button>
             </el-button-group>
           </template>
         </el-table-column>
@@ -190,6 +191,21 @@
         } catch(e) {
           if (e.message) this.$message.error(e.message);
         }
+      },
+
+      // manual dispatch
+      async onDispatched(row) {
+        try {
+          await this.$confirm('此操作仅将记录标记为已派送，包网后台需要手工上分。确定执行？', '操作确认');
+
+          await this.$store.dispatch(DrawActions.ManualDispatch, {id: row.id});
+
+          this.$message.success('手动派送');
+        } catch(e) {
+          if (e.message) this.$message.error(e.message);
+        }
+
+        this.getDrawList();
       },
 
       // delete
