@@ -65,7 +65,7 @@
             </el-popover>
           </template>
         </el-table-column>
-        <el-table-column label="导入日志" align="center" width="120px">
+        <el-table-column label="派送日志" align="center" width="120px">
           <template slot-scope="scope">
             <el-popover title="UserAgent" placement="top-end" width="500px" v-if="scope.row.notes">
               {{scope.row.notes}}
