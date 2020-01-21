@@ -57,12 +57,21 @@
             <span>{{scope.row.createdAt.substr(5)}}</span><br>
           </template>
         </el-table-column>
-        <el-table-column label="UserAgent" align="center">
+        <el-table-column label="UserAgent" align="center" width="120px">
           <template slot-scope="scope">
-            <el-popover title="UserAgent" placement="top-start" width="500px">
+            <el-popover title="UserAgent" placement="top-end" width="500px">
               {{scope.row.ua}}
               <el-button slot="reference" type="text">查看</el-button>
             </el-popover>
+          </template>
+        </el-table-column>
+        <el-table-column label="导入日志" align="center" width="120px">
+          <template slot-scope="scope">
+            <el-popover title="UserAgent" placement="top-end" width="500px" v-if="scope.row.notes">
+              {{scope.row.notes}}
+              <el-button slot="reference" type="text">查看</el-button>
+            </el-popover>
+            <span v-else>--</span>
           </template>
         </el-table-column>
         <el-table-column label="审计IP" align="center" width="120">
