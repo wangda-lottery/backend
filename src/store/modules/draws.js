@@ -7,7 +7,7 @@ import {
 import {
   DrawMutations,
 } from '../mutationTypes';
-import {param} from "../../utils/index";
+import {param, parseTime} from "../../utils/index";
 import request from "../../utils/request";
 
 const draws = {
@@ -34,8 +34,14 @@ const draws = {
   actions: {
     // 获取列表
     async [DrawActions.GetDrawList]({commit, getters}, payload) {
+      const data = Object.assign({}, payload);
+      if (payload.queryTime && payload.queryTime[0]) {
+        data['queryTimeStart'] = parseTime(payload.queryTime[0]);
+        data['queryTimeEnd'] = parseTime(payload.queryTime[1]);
+      }
+
       const draws = await request({
-        url: `draws?` + param(payload),
+        url: `draws?` + param(data),
         method: 'get',
         data: payload
       });

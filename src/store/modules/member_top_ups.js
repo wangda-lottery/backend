@@ -7,7 +7,7 @@ import {
 import {
   MemTopUpMutations
 } from '../mutationTypes';
-import {param} from "../../utils/index";
+import {param, parseTime} from "../../utils/index";
 import request from "../../utils/request";
 
 const memberTopUps = {
@@ -34,8 +34,14 @@ const memberTopUps = {
   actions: {
     // 获取会员列表
     async [MemTopUpActions.GetMemList]({commit, getters}, payload) {
+      const data = Object.assign({}, payload);
+      if (payload.queryTime && payload.queryTime[0]) {
+        data['queryTimeStart'] = parseTime(payload.queryTime[0]);
+        data['queryTimeEnd'] = parseTime(payload.queryTime[1]);
+      }
+
       const memberTopUps = await request({
-        url: `member-top-ups?` + param(payload),
+        url: `member-top-ups?` + param(data),
         method: 'get',
         data: payload
       });

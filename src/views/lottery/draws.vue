@@ -3,7 +3,7 @@
     <div>
       <el-row type="flex" justify="space-between">
         <div class="filter-container">
-          <el-input v-model="listQuery.nickname"
+          <el-input v-model="listQuery.accountName"
                     class="filter-item"
                     style="width: 180px;"
                     clearable
@@ -76,7 +76,7 @@
           <template slot-scope="scope">
             <el-button-group>
               <el-button type="success" size="small" @click="onDispatched(scope.row)" :disabled="scope.row.exported === 1">手动派送</el-button>
-              <el-button type="danger" size="small" @click="onDelete(scope.row)" :disabled="scope.row.exported === 0">删除</el-button>
+              <el-button type="danger" size="small" @click="onDelete(scope.row)" :disabled="scope.row.exported === 1">删除</el-button>
             </el-button-group>
           </template>
         </el-table-column>
@@ -119,7 +119,7 @@
           'per-page': 20,
           'sort': '-id',
 
-          memId: undefined,
+          accountName: undefined,
           queryTime: [undefined, undefined],
         }, this.loadCachedData()),
       };

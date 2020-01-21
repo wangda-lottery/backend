@@ -3,7 +3,7 @@
     <div>
       <el-row type="flex" justify="space-between">
         <div class="filter-container">
-          <el-input  v-model="listQuery.nickname"
+          <el-input  v-model="listQuery.accountName"
                      class="filter-item"
                      style="width: 180px;"
                     clearable placeholder="会员名"/>
@@ -96,7 +96,7 @@
           'per-page': 20,
           'sort': '-id',
 
-          memId: undefined,
+          accountName: undefined,
           queryTime: [undefined, undefined],
         }, this.loadCachedData()),
       };
