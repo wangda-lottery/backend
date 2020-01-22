@@ -63,7 +63,7 @@
       <div class="pagination-container">
         <el-pagination v-show="memberTopUps.items.length > 0"
                        :current-page="listQuery.page"
-                       :page-size="listQuery.limit"
+                       :page-size="listQuery['per-page']"
                        :total="memberTopUps._meta.totalCount"
                        :page-sizes="[10, 20, 30, 50]"
                        background
@@ -145,7 +145,7 @@
 
       // 分页大小改变
       onSizeChange(val) {
-        this.listQuery.limit = val;
+        this.listQuery['per-page'] = val;
 
         this.getMemTopUpList();
       },
