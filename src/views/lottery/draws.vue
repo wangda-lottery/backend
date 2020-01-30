@@ -74,7 +74,7 @@
             <span v-else>--</span>
           </template>
         </el-table-column>
-        <el-table-column label="审计IP" align="center" width="120">
+        <el-table-column label="审计IP" align="center" width="160">
           <template slot-scope="scope">
             <span>
               {{scope.row.ip}}
